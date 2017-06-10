@@ -61,7 +61,6 @@ CREATE  TABLE IF NOT EXISTS `bdprestamos`.`PRESTAMO` (
   `interes` DECIMAL(4,2) NOT NULL ,
   `estado` TINYINT(1) NULL DEFAULT false ,
   `CLIENTE_idCliente` INT NOT NULL ,
-  `montoAcordadoTotal` DECIMAL(18,2) NOT NULL ,
   PRIMARY KEY (`idprestamo`, `CLIENTE_idCliente`) ,
   INDEX `fk_PRESTAMO_CLIENTE1_idx` (`CLIENTE_idCliente` ASC) ,
   CONSTRAINT `fk_PRESTAMO_CLIENTE1`
