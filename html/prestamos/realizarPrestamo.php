@@ -20,7 +20,7 @@ if(isset($_GET['prestamo']) and $_GET['prestamo']=true) {
     echo '<h4 style="color:green;">Prestamo realizado correctamente</h4>';
 }
 ?>
-<form  method="post" action="?view=hacerPrestamo&mode=prestamoConfirmado" id="frmPrestamo">
+<form  method="post" action="?view=prestamo&mode=prestamoConfirmado" id="frmPrestamo">
     <label for="selecCliente">Seleccionar Cliente</label>
     <a target="_self" href="?view=cliente&from=hacerPrestamo&mode=seeAll&seleccionar=true">buscar</a><br>
     <?php
@@ -210,7 +210,7 @@ if(isset($_GET['prestamo']) and $_GET['prestamo']=true) {
                 document.getElementById('btnRealizarPrestamo').disabled = false;
             }
         }
-        connect.open('POST','ajax.php?mode=hacerPrestamo',true);
+        connect.open('POST','ajax.php?mode=prestamo',true);
         connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
         connect.send(form);
 

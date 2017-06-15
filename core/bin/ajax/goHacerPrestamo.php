@@ -11,7 +11,6 @@ if (!empty($_POST['idCliente']) and
     !empty($_POST['interes'])
 ) {
 
-    include('core/functions/detallePrestamo.php');
 
     /*** FUNCION PARA CALCULAR LOS MONTOS DE PAGO ***/
 
@@ -159,8 +158,6 @@ if (!empty($_POST['idCliente']) and
 
     echo $tablaHTML;
 
-    /*VARIABLE GLOBAL CON TODOS LOS DETALLES DEL PRESTAMO CALCULADO*/
-    setDetallePrestamo($_POST['idCliente'],$_montos,$_fechas,$_POST['frecuenciaPago'],$_POST['numCuotas'],'pendiente');
 } else {
 
     echo '<strong>ERROR:</strong> Todos los datos deben estar llenos.';

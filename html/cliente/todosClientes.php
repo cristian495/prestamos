@@ -21,7 +21,7 @@ if(false != $_clientes) {
         {
 
             if(isset($from) and $from == 'hacerPrestamo'){
-                $HTML.= '<td><a href="?view=hacerPrestamo&clientSelected='.$_clientes[$id_cliente]['idCliente'].'">Seleccionar</a></td>';
+                $HTML.= '<td><a href="?view=prestamo&clientSelected='.$_clientes[$id_cliente]['idCliente'].'">Seleccionar</a></td>';
             }elseif(isset($from) and $from == 'cobrar'){
                 $HTML.= '<td><a href="?view=cobrar&clientSelected='.$_clientes[$id_cliente]['idCliente'].'">Seleccionar</a></td>';
             }

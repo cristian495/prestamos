@@ -170,9 +170,9 @@ class Prestamo{
         /** VALIDACION DE VALORES*/
         if(isset($_POST['idCliente']) and !empty($_POST['idCliente']))
         {
-            $this->Errors('?view=hacerPrestamo&clientSelected='.$_POST['idCliente'].'&error=');
+            $this->Errors('?view=prestamo&clientSelected='.$_POST['idCliente'].'&error=');
         }else{
-            $this->Errors('?view=hacerPrestamo&error=');
+            $this->Errors('?view=prestamo&error=');
         }
         /****************************/
 
@@ -234,10 +234,11 @@ class Prestamo{
 
 
 
-        header('Location: ?view=hacerPrestamo&prestamo=true');
+        header('Location: ?view=prestamo&prestamo=true');
     }
     /*******************************************/
-}/**
+}
+/**
 ALTER TABLE `prestamo`
 DROP FOREIGN KEY `fk_PRESTAMO_cliente`;
 ALTER TABLE `prestamo`

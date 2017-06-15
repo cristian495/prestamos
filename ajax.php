@@ -2,7 +2,7 @@
 if($_POST){
     require("core/core.php");
     switch(isset($_GET['mode']) ? $_GET['mode'] : null){
-        case 'hacerPrestamo':
+        case 'prestamo':
             include('core/bin/ajax/goHacerPrestamo.php');
             break;
         default:
