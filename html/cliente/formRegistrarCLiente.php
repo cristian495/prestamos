@@ -36,7 +36,7 @@ if(isset($_GET['error'])) {
     <label for="telefono2Cliente">Telefono 2</label>
     <input type="text"  name="telefono2Cliente" id="telefono2Cliente"/>
 
-    <label for="direccionCliente">Dni</label>
+    <label for="direccionCliente">Direccion</label>
     <input type="text"  name="direccionCliente" id="direccionCliente"/>
 
     <input type="submit" id="submitRegistrarCliente"/>

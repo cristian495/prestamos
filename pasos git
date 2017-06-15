@@ -1,0 +1,11 @@
+ir a la carpeta y  poner
+git init
+
+agregar los archivos a subir
+git add *
+
+pongo un mensaje de la subida
+git commit -m ' el mensaje '
+
+empezar la subida
+git push -u origin master

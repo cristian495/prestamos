@@ -54,8 +54,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `bdprestamos`.`PRESTAMO` (
   `idprestamo` INT NOT NULL AUTO_INCREMENT ,
-  `montoAcordadoBruto` DECIMAL(18,2) NOT NULL ,
+  `montoAcordado` DECIMAL(18,2) NOT NULL ,
   `fechaInicial` DATE NOT NULL ,
+  `frecuenciaPago` VARCHAR(10) NOT NULL ,
   `numeroCuotas` TINYINT NOT NULL ,
   `fechaFinal` DATE NOT NULL ,
   `interes` DECIMAL(4,2) NOT NULL ,
@@ -63,7 +64,7 @@ CREATE  TABLE IF NOT EXISTS `bdprestamos`.`PRESTAMO` (
   `CLIENTE_idCliente` INT NOT NULL ,
   PRIMARY KEY (`idprestamo`, `CLIENTE_idCliente`) ,
   INDEX `fk_PRESTAMO_CLIENTE1_idx` (`CLIENTE_idCliente` ASC) ,
-  CONSTRAINT `fk_PRESTAMO_CLIENTE1`
+  CONSTRAINT `fk_prestamo_cliente`
     FOREIGN KEY (`CLIENTE_idCliente` )
     REFERENCES `bdprestamos`.`CLIENTE` (`idCliente` )
     ON DELETE RESTRICT
@@ -75,7 +76,7 @@ ENGINE = InnoDB;
 -- Table `bdprestamos`.`CUOTAS`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `bdprestamos`.`CUOTAS` (
-  `idCuotas` INT ZEROFILL NOT NULL AUTO_INCREMENT ,
+  `idCuotas` INT  NOT NULL AUTO_INCREMENT ,
   `fechaPago` DATE NOT NULL ,
   `montoPagar` DECIMAL(18,2) NOT NULL ,
   `estado` VARCHAR(45) NOT NULL ,
@@ -86,8 +87,8 @@ CREATE  TABLE IF NOT EXISTS `bdprestamos`.`CUOTAS` (
   CONSTRAINT `fk_CUOTAS_PRESTAMO1`
     FOREIGN KEY (`PRESTAMO_idprestamo` )
     REFERENCES `bdprestamos`.`PRESTAMO` (`idprestamo` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -102,19 +103,24 @@ CREATE  TABLE IF NOT EXISTS `bdprestamos`.`PAGO_CUOTA` (
   `CUOTAS_idCuotas` INT NOT NULL ,
   `CUOTAS_PRESTAMO_idprestamo` INT NOT NULL ,
   `CLIENTE_idCliente` INT NOT NULL ,
+
   PRIMARY KEY (`idPagoCuota`, `CUOTAS_idCuotas`, `CUOTAS_PRESTAMO_idprestamo`, `CLIENTE_idCliente`) ,
+
   INDEX `fk_PAGO_CUOTA_CUOTAS1_idx` (`CUOTAS_idCuotas` ASC, `CUOTAS_PRESTAMO_idprestamo` ASC) ,
+
   INDEX `fk_PAGO_CUOTA_CLIENTE1_idx` (`CLIENTE_idCliente` ASC) ,
+
   CONSTRAINT `fk_PAGO_CUOTA_CUOTAS1`
     FOREIGN KEY (`CUOTAS_idCuotas` , `CUOTAS_PRESTAMO_idprestamo` )
     REFERENCES `bdprestamos`.`CUOTAS` (`idCuotas` , `PRESTAMO_idprestamo` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+
   CONSTRAINT `fk_PAGO_CUOTA_CLIENTE1`
     FOREIGN KEY (`CLIENTE_idCliente` )
     REFERENCES `bdprestamos`.`CLIENTE` (`idCliente` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 USE `bdprestamos` ;
